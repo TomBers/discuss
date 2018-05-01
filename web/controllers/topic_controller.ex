@@ -5,7 +5,8 @@ defmodule Discuss.TopicController do
 
   def index(conn, _params) do
     query = from topic in Topic,
-      select: topic.title
+      select: topic.title,
+      where: topic.title != "bob"
     IO.inspect(Repo.all(query))
     render conn, "index.html", topics: Repo.all(query)
   end

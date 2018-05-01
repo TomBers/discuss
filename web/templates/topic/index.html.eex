@@ -2,3 +2,4 @@
 <%= for topic <- @topics do %>
     <p><%= topic %></p>
 <% end %>
+<%= link("Add new", to: "/topics/new/") %>
