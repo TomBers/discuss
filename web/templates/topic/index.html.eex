@@ -1,0 +1,4 @@
+<h1>Topics</h1>
+<%= for topic <- @topics do %>
+    <p><%= topic %></p>
+<% end %>
