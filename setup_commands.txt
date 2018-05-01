@@ -1,0 +1,22 @@
+brew update
+brew install elixir
+brew upgrade elixir
+mix new cards
+cd cards/
+atom .
+
+Interact with the project from the CL
+iex -S mix
+
+Generate docs
+mix docs
+
+Run tests
+mix test
+
+Generate and run migrations
+mix ecto.gen.migration add_topics
+mix ecto.migrate
+
+Run server
+mix phoenix.server
