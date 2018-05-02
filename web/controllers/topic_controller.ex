@@ -6,9 +6,15 @@ defmodule Discuss.TopicController do
   def index(conn, _params) do
     query = from topic in Topic,
       select: topic.title,
-      where: topic.title != "bob"
+      where: topic.title != "bob",
+      limit: 2
     IO.inspect(Repo.all(query))
     render conn, "index.html", topics: Repo.all(query)
+  end
+
+  def all(conn, _params) do
+    topics = Repo.all(Topic)
+    render conn, "all.html", topics: topics
   end
 
   def new(conn, _params) do
@@ -20,9 +26,13 @@ defmodule Discuss.TopicController do
     changeset = Topic.changeset(%Topic{}, topic)
     case Repo.insert(changeset) do
       {:ok, post} ->
-        render conn, "success.html"
+        conn
+        |> put_flash(:info, "Topic Created")
+        |> redirect(to: topic_path(conn, :all))
       {:error, changeset} ->
-        render conn, "new.html", changeset: changeset
+        conn
+        |> put_flash(:error, "Error")
+        |> render "new.html", changeset: changeset
     end
   end
 end
