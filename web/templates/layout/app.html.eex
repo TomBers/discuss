@@ -14,6 +14,11 @@
   </head>
 
   <body>
+    <nav class="light-blue">
+      <div class="nav-wrapper container">
+        <a href="/" class="brand-logo">Discuss</a>
+      </div>
+    </nav>
     <div class="container">
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
