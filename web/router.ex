@@ -16,10 +16,23 @@ defmodule Discuss.Router do
   scope "/", Discuss do
     pipe_through :browser # Use the default browser stack
 
-    get "/", TopicController, :all
-    get "/topics", TopicController, :index
-    get "/topics/new", TopicController, :new
-    post "/topics", TopicController, :create
+    # get "/limited", TopicController, :limited
+
+    # Just route slash to index
+    get "/", TopicController, :index
+    # Automatically generates the RESTFUL routes
+    resources "/topics", TopicController
+    # get "/", TopicController, :index
+    # get "/topics/new", TopicController, :new
+    # post "/topics", TopicController, :create
+    # get "/topics/:id/edit", TopicController, :edit
+    # put "/topics/:id", TopicController, :update
+  end
+
+  scope "/auth", Discuss do
+    pipe_through :browser
+    get "/:provider", AuthController, :request
+    get ":provider/callback", AuthController, :callback
   end
 
   # Other scopes may use custom stacks.

@@ -18,5 +18,8 @@ Generate and run migrations
 mix ecto.gen.migration add_topics
 mix ecto.migrate
 
+mix ecto.gen.migration add_users
+mix ecto.migrate
+
 Run server
 mix phoenix.server
