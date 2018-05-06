@@ -50,7 +50,7 @@ config :phoenix, :stacktrace_depth, 20
 # At work use default port 5432 at home 5430
 config :discuss, Discuss.Repo,
   adapter: Ecto.Adapters.Postgres,
-  port: 5432,
+  port: 5430,
   username: "tomberman",
   password: "",
   database: "discuss_dev",
