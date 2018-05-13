@@ -32,9 +32,14 @@ function renderComment(event) {
 }
 
 function commentTemplate(comment) {
+  const rnd = Math.floor(Math.random() * 100);
+  let email = comment.user ? comment.user.email : "Anon " + rnd
   return `
   <li class="collection-item">
     ${comment.content}
+    <div class="secondary-content">
+      ${email}
+    </div>
   </li>
   `;
 }
